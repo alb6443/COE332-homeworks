@@ -18,10 +18,6 @@ def get_redis_client():
 
 rd = get_redis_client()
 
-# @app.route('/', methods=['GET'])
-# def hello_world():
-#     return 'Hello, world!\n'
-
 @app.route('/data', methods=['POST','GET','DELETE'])
 def handle_data():
     """
