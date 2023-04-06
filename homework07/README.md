@@ -146,7 +146,7 @@ This project has one script-- ``autoTrends_app.py``
 Open a separate terminal window for the next step. Make sure the services are up and running with the previously mentioned ``run`` command. To make a request to your Flask app, type the following in the new terminal:
 
 ```console
-[user-vm]$ curl http://10.233.42.109/data -X POST
+[user-vm]$ curl 10.233.42.109:5000//data -X POST
 ```
 All of the data from the automotive trends file will populate. To retrieve other data, familiarize yourself with the other routes detailed in the table below:
 
