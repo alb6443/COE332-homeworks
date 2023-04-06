@@ -94,34 +94,34 @@ def showCars(year: str) -> list:
                 yearInfo.append(carDict)
     return yearInfo
 
-@app.route('/plot', methods=['GET'])
-def showPlot():
-    """
-    xxxxx
-    Args:
-        N/A
-    Returns:
-        xxxxx
-    """
-    x = np.linspace(0, 2 * np.pi, 50)
-    plt.plot(x, np.sin(x), 'r-x', label='Sin(x)')
-    plt.plot(x, np.cos(x), 'g-^', label='Cos(x)')
-    plt.legend() # Display the legend.
-    plt.xlabel('Rads') # Add a label to the x-axis.
-    plt.ylabel('Amplitude') # Add a label to the y-axis.
-    plt.title('Sin and Cos Waves') # Add a graph title.
-    plt.savefig('/data/my_labels_legends.png')
-    plt.show()
-    # # read the raw file bytes into a python object
-    file_bytes = open('/data/my_labels_legends.png', 'rb').read()
+# @app.route('/plot', methods=['GET'])
+# def showPlot():
+#     """
+#     xxxxx
+#     Args:
+#         N/A
+#     Returns:
+#         xxxxx
+#     """
+#     x = np.linspace(0, 2 * np.pi, 50)
+#     plt.plot(x, np.sin(x), 'r-x', label='Sin(x)')
+#     plt.plot(x, np.cos(x), 'g-^', label='Cos(x)')
+#     plt.legend() # Display the legend.
+#     plt.xlabel('Rads') # Add a label to the x-axis.
+#     plt.ylabel('Amplitude') # Add a label to the y-axis.
+#     plt.title('Sin and Cos Waves') # Add a graph title.
+#     plt.savefig('/data/my_labels_legends.png')
+#     plt.show()
+#     # # read the raw file bytes into a python object
+#     file_bytes = open('/data/my_labels_legends.png', 'rb').read()
 
-    # # set the file bytes as a key in Redis
-    rd.set('key', file_bytes)
+#     # # set the file bytes as a key in Redis
+#     rd.set('key', file_bytes)
 
-    if len(file_bytes) == 0:
-        return 'No data in db. Post data to get info\n'
-    else:
-        return 'Plot is loaded.'
+#     if len(file_bytes) == 0:
+#         return 'No data in db. Post data to get info\n'
+#     else:
+#         return 'Plot is loaded.'
     
 
 if __name__ == '__main__':
