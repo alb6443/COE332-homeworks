@@ -1,0 +1,29 @@
+---
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: alb6443-test-redis-deployment
+   labels:
+     app: alb6443-test-redis-deployment
+     username: alb6443
+     env: test  
+ spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       app: alb6443-test-redis-deployment
+   template:
+     metadata:
+       labels:
+         app: alb6443-test-redis-deployment
+     spec:
+       containers:
+         - name: redis-app
+           image: redis:7
+           volumeMounts:
+           - name: alb6443-test-auto-data
+             mountPath: "/data"
+       volumes:
+       - name: alb6443-test-auto-data
+         persistentVolumeClaim:
+           claimName: alb6443-test-auto-data

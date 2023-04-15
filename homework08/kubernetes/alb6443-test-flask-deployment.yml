@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alb6443-test-flask-deployment
+  labels:
+    app: alb6443-test-flask-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: alb6443-test-flask-app
+  template:
+    metadata:
+      labels:
+        app: alb6443-test-flask-app
+    spec:
+      containers:
+        - name: alb6443-test-flask-app
+          imagePullPolicy: Always
+          image: alb6443/auto_trends_app:hw07
+          env:
+          - name: REDIS_IP
+            value: 10.233.34.143
+          ports:
+          - name: http
+            containerPort: 5000
